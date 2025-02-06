@@ -1,0 +1,8 @@
+- type: entity
+  parent: SurgeryStepInsertOrgan
+  id: SurgeryStepInsertCock
+  name: Add cock
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SurgeryStep
+    duration: 6

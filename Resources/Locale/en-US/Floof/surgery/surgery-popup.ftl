@@ -1,0 +1,2 @@
+surgery-popup-step-SurgeryStepInsertCock = {$user} is inserting a cock into {$target}'s {$part}!
+surgery-popup-procedure-SurgeryRemoveCock-step-SurgeryStepRemoveOrgan = {$user} is removing the cock from {$target}'s {$part}!

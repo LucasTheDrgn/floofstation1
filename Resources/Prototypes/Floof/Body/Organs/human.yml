@@ -1,0 +1,91 @@
+- type: entity
+  id: OrganHumanCock
+  parent: BaseHumanOrgan
+  name: human cock
+  components:
+  - type: Sprite
+    sprite: Floof/Objects/Fun/Lewd/Toys/Dildos/dildo_human.rsi
+    state: icon
+  - type: Cock
+  - type: Organ
+    slotId: cock
+    onAdd:
+    - type: CumProducer
+      solutionname: "penis"
+    - type: SolutionContainerManager
+      solutions:
+        penis:
+          maxVol: 25
+          reagents:
+          - ReagentId: Cum
+            Quantity: 25
+
+- type: entity
+  id: OrganBluespaceCock
+  parent: OrganHumanCock
+  name: bluespace cock
+  components:
+  - type: Sprite
+    sprite: Floof/Objects/Fun/Lewd/Toys/Dildos/dildo_equine.rsi
+    state: icon
+  - type: Cock
+  - type: Organ
+    slotId: cock
+    onAdd:
+    - type: CumProducer
+      solutionname: "penis"
+      maxVolume: 200
+      quantityPerUpdate: 40
+    - type: SolutionContainerManager
+      solutions:
+        penis:
+          maxVol: 200
+          reagents:
+          - ReagentId: Cum
+            Quantity: 200
+
+- type: entity
+  id: OrganHumanPussy
+  parent: BaseHumanOrgan
+  name: pussy
+  components:
+  - type: Sprite
+    layers:
+    - state: appendix
+    - state: appendix-inflamed
+      visible: false
+  - type: Organ
+    slotId: pussy
+    onAdd:
+    - type: SquirtProducer
+      solutionname: "vagina"
+    - type: SolutionContainerManager
+      solutions:
+        vagina:
+          maxVol: 25
+          reagents:
+          - ReagentId: NaturalLubricant
+            Quantity: 25
+
+- type: entity
+  id: OrganHumanBoobs
+  parent: BaseHumanOrgan
+  name: boobs
+  components:
+  - type: Sprite
+    layers:
+    - state: appendix
+    - state: appendix-inflamed
+      visible: false
+  - type: Organ
+    slotId: boobs
+    onAdd:
+    - type: MilkProducer
+      solutionname: "breasts"
+    - type: SolutionContainerManager
+      solutions:
+        breasts:
+          maxVol: 50
+          reagents:
+          - ReagentId: Milk
+            Quantity: 50

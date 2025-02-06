@@ -24,6 +24,9 @@
         stomach: OrganHumanStomach
         liver: OrganHumanLiver
         kidneys: OrganHumanKidneys
+        cock: OrganPlaceholderCock
+        pussy: OrganPlaceholderPussy
+        boobs: OrganPlaceholderBoobs
     right arm:
       part: RightArmHuman
       connections:

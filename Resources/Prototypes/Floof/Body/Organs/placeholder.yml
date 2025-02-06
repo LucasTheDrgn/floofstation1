@@ -1,0 +1,119 @@
+- type: entity
+  id: BasePlaceholderOrganUnGibbable
+  parent: BaseHumanOrganUnGibbable
+  abstract: true
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: BasePlaceholderOrgan
+  parent: BaseHumanOrgan
+  abstract: true
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderBrain
+  parent: OrganHumanBrain
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderEyes
+  parent: OrganHumanEyes
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderTongue
+  parent: OrganHumanTongue
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderAppendix
+  parent: OrganHumanAppendix
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderEars
+  parent: OrganHumanEars
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderLungs
+  parent: OrganHumanLungs
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderHeart
+  parent: OrganHumanHeart
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderStomach
+  parent: OrganHumanStomach
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderLiver
+  parent: OrganHumanLiver
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderKidneys
+  parent: OrganHumanKidneys
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderCock
+  parent: OrganHumanCock
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderPussy
+  parent: OrganHumanPussy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: OrganPlaceholderBoobs
+  parent: OrganHumanBoobs
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0
