@@ -54,7 +54,7 @@
       state: quadsprite
     name: cyborg
   - type: Construction
-    node: cyborg
+    node: Quadborg
   - type: Speech
     speechVerb: Robotic
   - type: LayingDown
@@ -123,6 +123,8 @@
   - type: BorgChassis
     hasMindState: quadspritesalvl
     noMindState: quadspritesalvr
+  - type: Construction
+    node: Quadsalv
 
 - type: entity
   id: BorgChassisQuadserv
@@ -153,6 +155,8 @@
   - type: BorgChassis
     hasMindState: quadspriteservl
     noMindState: quadspriteservr
+  - type: Construction
+    node: Quadserv
     
 - type: entity
   id: BorgChassisQuadmed
@@ -183,6 +187,8 @@
   - type: BorgChassis
     hasMindState: quadspritemedl
     noMindState: quadspritemedr
+  - type: Construction
+    node: Quadmed
     
 - type: entity
   id: BorgChassisApex

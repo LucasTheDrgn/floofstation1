@@ -17,6 +17,15 @@
         completed:
           - !type:EmptyAllContainers
 
+    # swap between quad and default
+    - to: quadborgstart
+      conditions:
+      - !type:ContainerEmpty
+        container: part-container
+      steps:
+      - tool: Screwing
+        doAfter: 2
+
     - to: cyborg
       steps:
       - assemblyId: generic
@@ -179,6 +188,131 @@
       - tool: Screwing
         doAfter: 0.5
 
+  - node: cyborg
+    entity: BorgChassisGeneric
+    edges:
+
+    # Floof: Deconstruct borgs without brains
+    - to: start
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
+    
+  - node: engineer
+    entity: BorgChassisEngineer
+    edges:
+
+    # Floof: Deconstruct borgs without brains
+    - to: start
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
+
+  - node: janitor
+    entity: BorgChassisJanitor
+    edges:
+
+    # Floof: Deconstruct borgs without brains
+    - to: start
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
+
+  - node: mining
+    entity: BorgChassisMining
+    edges:
+
+    # Floof: Deconstruct borgs without brains
+    - to: start
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
+
+  - node: medical
+    entity: BorgChassisMedical
+    edges:
+
+    # Floof: Deconstruct borgs without brains
+    - to: start
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
+
+  - node: service
+    entity: BorgChassisService
+    edges:
+
+    # Floof: Deconstruct borgs without brains
+    - to: start
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
+
+  - node: syndicateassault
+    entity: BorgChassisSyndicateAssault
+
+  - node: syndicatemedical
+    entity: BorgChassisSyndicateMedical
+
+  - node: syndicatesaboteur
+    entity: BorgChassisSyndicateSaboteur
+
+  # Floof: Begin quadborgs
+
+  - node: quadborgstart
+    entity: Quadborgendoskeleton
+    edges:
+
+    # empty the parts via prying
+    - to: quadborgstart
+      conditions:
+      - !type:ContainerNotEmpty
+        container: part-container
+      steps:
+      - tool: Prying
+        doAfter: 0.5
+        completed:
+          - !type:EmptyAllContainers
+
+    # swap between quad and default
+    - to: start
+      conditions:
+      - !type:ContainerEmpty
+        container: part-container
+      steps:
+      - tool: Screwing
+        doAfter: 2
+
     - to: Quadborg
       steps:
       - assemblyId: quadborg
@@ -289,39 +423,60 @@
         
   - node: Quadborg
     entity: BorgChassisQuad
+    edges:
+
+    # empty the parts via prying
+    - to: quadborgstart
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
     
   - node: Quadsalv
     entity: BorgChassisQuadsalv
+    edges:
+
+    # empty the parts via prying
+    - to: quadborgstart
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
     
   - node: Quadserv
     entity: BorgChassisQuadserv
+    edges:
+
+    # empty the parts via prying
+    - to: quadborgstart
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
     
   - node: Quadmed
     entity: BorgChassisQuadmed
+    edges:
 
-  - node: cyborg
-    entity: BorgChassisGeneric
-    
-  - node: engineer
-    entity: BorgChassisEngineer
-
-  - node: janitor
-    entity: BorgChassisJanitor
-
-  - node: mining
-    entity: BorgChassisMining
-
-  - node: medical
-    entity: BorgChassisMedical
-
-  - node: service
-    entity: BorgChassisService
-
-  - node: syndicateassault
-    entity: BorgChassisSyndicateAssault
-
-  - node: syndicatemedical
-    entity: BorgChassisSyndicateMedical
-
-  - node: syndicatesaboteur
-    entity: BorgChassisSyndicateSaboteur
+    # empty the parts via prying
+    - to: quadborgstart
+      conditions:
+      - !type:ContainerEmpty
+        container: borg_brain
+      steps:
+      - tool: Prying
+        doAfter: 3
+        completed:
+          - !type:EmptyAllContainers
