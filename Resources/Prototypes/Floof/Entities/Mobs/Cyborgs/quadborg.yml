@@ -2,6 +2,7 @@
 - type: entity
   id: BorgChassisQuad
   parent: BaseBorgChassisNT
+  name: security quadborg
   components:
   - type: Sprite
     sprite: Floof/Mobs/Silicon/quad.rsi
@@ -69,6 +70,7 @@
 - type: entity
   id: BorgChassisQuadCC
   parent: BorgChassisQuad
+  name: CentCom quadborg
   components:
   - type: Sprite
     sprite: Floof/Mobs/Silicon/quad.rsi
@@ -94,7 +96,8 @@
       
 - type: entity
   id: BorgChassisQuadsalv
-  parent: BorgChassisQuad
+  name: salvage quadborg
+  parent: [BorgChassisMining, BorgChassisQuad]
   components:
   - type: Sprite
     sprite: Floof/Mobs/Silicon/quad.rsi
@@ -117,34 +120,14 @@
     noMovementLayers:
       movement:
         state: quadspritesalv
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Supply
-    - Binary
-    - Common
-    - Science
-  - type: ActiveRadio
-    channels:
-    - Supply
-    - Binary
-    - Common
-    - Science
   - type: BorgChassis
-    maxModules: 4
-    moduleWhitelist:
-      tags:
-      - BorgModuleGeneric
-      - BorgModuleCargo
     hasMindState: quadspritesalvl
     noMindState: quadspritesalvr
-  - type: AccessReader
-    access: [["Cargo"], ["Salvage"], ["Command"], ["Research"]]
-  - type: SiliconLawProvider
-    laws: Corporate
 
 - type: entity
   id: BorgChassisQuadserv
-  parent: BorgChassisQuad
+  name: service quadborg
+  parent: [BorgChassisService, BorgChassisQuad]
   components:
   - type: Sprite
     sprite: Floof/Mobs/Silicon/quad.rsi
@@ -167,34 +150,14 @@
     noMovementLayers:
       movement:
         state: quadspriteserv
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Service
-    - Binary
-    - Common
-    - Science
-  - type: ActiveRadio
-    channels:
-    - Service
-    - Binary
-    - Common
-    - Science
   - type: BorgChassis
-    maxModules: 4
-    moduleWhitelist:
-      tags:
-      - BorgModuleGeneric
-      - BorgModuleService
     hasMindState: quadspriteservl
     noMindState: quadspriteservr
-  - type: AccessReader
-    access: [["Cargo"], ["Service"], ["Command"], ["Research"]]
-  - type: SiliconLawProvider
-    laws: StationEfficiency
     
 - type: entity
   id: BorgChassisQuadmed
-  parent: BorgChassisQuad
+  name: medical quadborg
+  parent: [BorgChassisMedical, BorgChassisQuad]
   components:
   - type: Sprite
     sprite: Floof/Mobs/Silicon/quad.rsi
@@ -217,33 +180,13 @@
     noMovementLayers:
       movement:
         state: quadspritemed
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Medical
-    - Binary
-    - Common
-    - Science
-  - type: ActiveRadio
-    channels:
-    - Medical
-    - Binary
-    - Common
-    - Science
   - type: BorgChassis
-    maxModules: 4
-    moduleWhitelist:
-      tags:
-      - BorgModuleGeneric
-      - BorgModuleMedical
     hasMindState: quadspritemedl
     noMindState: quadspritemedr
-  - type: AccessReader
-    access: [["Medical"], ["Salvage"], ["Command"], ["Research"]]
-  - type: SiliconLawProvider
-    laws: Medical
     
 - type: entity
   id: BorgChassisApex
+  name: Apex
   parent: BorgChassisQuad
   components:
   - type: Sprite

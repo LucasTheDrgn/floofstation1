@@ -259,6 +259,13 @@
   - type: SiliconLawProvider
     laws: Medical
   - type: SurgeryTarget
+  - type: ShowHealthBars # Floof: Med borgs get healthvision
+    damageContainers:
+    - Biological
+  - type: ShowHealthIcons
+    damageContainers:
+    - Biological
+
 
 - type: entity
   id: BorgChassisService
@@ -307,6 +314,8 @@
     access: [["Service"], ["Command"], ["Research"]]
   - type: Inventory
     templateId: borgTall
+  - type: ShowHungerIcons # Floof: Service borgs get thungerstvision
+  - type: ShowThirstIcons
 
 - type: entity
   id: BorgChassisSyndicateAssault
