@@ -59,12 +59,22 @@ public sealed class TraitSystem : EntitySystem
             if (_prototype.TryIndex<TraitPrototype>(traitId, out var traitPrototype))
             {
                 sortedTraits.Add(traitPrototype);
+
+                // To check for cheaters. :FaridaBirb.png:
+                pointsTotal += traitPrototype.Points;
+                --traitSelections;
             }
             else
             {
                 DebugTools.Assert($"No trait found with ID {traitId}!");
                 return;
             }
+        }
+
+        if (pointsTotal < 0 || traitSelections < 0) // Floof: Just skip adding traits if they're in an illegal configuration.
+        {
+            PunishCheater(args.Mob);
+            return;
         }
 
         sortedTraits.Sort();
@@ -81,15 +91,8 @@ public sealed class TraitSystem : EntitySystem
                 out _))
                 continue;
 
-            // To check for cheaters. :FaridaBirb.png:
-            pointsTotal += traitPrototype.Points;
-            --traitSelections;
-
             AddTrait(args.Mob, traitPrototype);
         }
-
-        if (pointsTotal < 0 || traitSelections < 0)
-            PunishCheater(args.Mob);
     }
 
     /// <summary>
@@ -111,30 +114,42 @@ public sealed class TraitSystem : EntitySystem
         _adminLog.Add(LogType.AdminMessage, LogImpact.High,
             $"{ToPrettyString(uid):entity} attempted to spawn with an invalid trait list. This might be a mistake, or they might be cheating");
 
-        if (!_configuration.GetCVar(CCVars.TraitsPunishCheaters)
-            || !_playerManager.TryGetSessionByEntity(uid, out var targetPlayer))
-            return;
+        if (_playerManager.TryGetSessionByEntity(uid, out var targetPlayer))
+        {
+            var feedbackMessage = $"[font size=16][color=#ff0000]{"You have spawned in with an illegal trait point total. Your traits have been nullified as a result. If this was a mistake, please cryo and correct the issue."}[/color][/font]";
+            _chatManager.ChatMessageToOne(
+                ChatChannel.Emotes,
+                feedbackMessage,
+                feedbackMessage,
+                EntityUid.Invalid,
+                false,
+                targetPlayer.Channel);
+        }
 
-        // For maximum comedic effect, this is plenty of time for the cheater to get on station and start interacting with people.
-        var timeToDestroy = _random.NextFloat(120, 360);
+        // if (!_configuration.GetCVar(CCVars.TraitsPunishCheaters)
+        //     || !_playerManager.TryGetSessionByEntity(uid, out var targetPlayer))
+        //     return;
 
-        Timer.Spawn(TimeSpan.FromSeconds(timeToDestroy), () => VaporizeCheater(targetPlayer));
+        // Floof: Why bother letting them spawn in with the illegal traits. This is just weird.
+        // var timeToDestroy = _random.NextFloat(120, 360);
+
+        // Timer.Spawn(TimeSpan.FromSeconds(timeToDestroy), () => VaporizeCheater(targetPlayer));
     }
 
     /// <summary>
     ///     https://www.youtube.com/watch?v=X2QMN0a_TrA
     /// </summary>
-    private void VaporizeCheater (Robust.Shared.Player.ICommonSession targetPlayer)
-    {
-        _adminSystem.Erase(targetPlayer);
+    // private void VaporizeCheater (Robust.Shared.Player.ICommonSession targetPlayer)
+    // {
+    //     _adminSystem.Erase(targetPlayer);
 
-        var feedbackMessage = $"[font size=24][color=#ff0000]{"You have spawned in with an illegal trait point total. If this was a result of cheats, then your nonexistence is a skill issue. Otherwise, feel free to click 'Return To Lobby', and fix your trait selections."}[/color][/font]";
-        _chatManager.ChatMessageToOne(
-            ChatChannel.Emotes,
-            feedbackMessage,
-            feedbackMessage,
-            EntityUid.Invalid,
-            false,
-            targetPlayer.Channel);
-    }
+    //     var feedbackMessage = $"[font size=24][color=#ff0000]{"You have spawned in with an illegal trait point total. If this was a result of cheats, then your nonexistence is a skill issue. Otherwise, feel free to click 'Return To Lobby', and fix your trait selections."}[/color][/font]";
+    //     _chatManager.ChatMessageToOne(
+    //         ChatChannel.Emotes,
+    //         feedbackMessage,
+    //         feedbackMessage,
+    //         EntityUid.Invalid,
+    //         false,
+    //         targetPlayer.Channel);
+    // }
 }
